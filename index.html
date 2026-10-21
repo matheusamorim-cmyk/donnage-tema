@@ -5,8 +5,353 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Prévia do novo tema · DonnaGê</title>
-  <!-- Estrutura simulada da Magazord (só para a prévia) -->
-  <link rel="stylesheet" href="preview/simulador-magazord.css">
+  <!-- Estrutura simulada da Magazord (só para a prévia; na loja ela já existe) -->
+  <style>
+/* ==========================================================================
+   Simulador da estrutura Magazord (só para a prévia no GitHub Pages)
+   Reproduz o esqueleto que a plataforma monta (cabeçalho, banner, vitrines,
+   rodapé) para o donnage-tema.css ter onde agir. NÃO subir na Magazord:
+   na loja, essa estrutura já existe.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+/* Faixa de aviso da prévia */
+.previa-aviso {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 50;
+  padding: 8px 14px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #ffffff;
+  background: rgba(30, 22, 21, 0.85);
+  border-radius: 999px;
+}
+
+/* Cabeçalho */
+.ra-header .header-top .box-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ra-header .header-info {
+  display: flex;
+  align-items: center;
+}
+
+.ra-header .item-top {
+  border-right: 1px solid;
+}
+
+.ra-header .item-top:last-child {
+  border-right: 0;
+}
+
+.ra-header .link-item-top {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.ra-header .header-middle .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ra-header #frm-search {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.ra-header #frm-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0 8px;
+}
+
+.ra-header .logo img {
+  height: 52px;
+}
+
+.ra-header .box-user {
+  width: 280px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#nav-root {
+  display: flex;
+  justify-content: center;
+}
+
+#nav-root > li > a {
+  display: flex;
+}
+
+/* Banner principal */
+.dynamic-banner-1 {
+  position: relative;
+}
+
+.dynamic-banner-1 img {
+  width: 100%;
+  height: min(78vh, 720px);
+  object-fit: cover;
+  object-position: 60% 30%;
+}
+
+.dynamic-banner-1 .swiper-button-prev,
+.dynamic-banner-1 .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  font-family: Arial, sans-serif;
+}
+
+.dynamic-banner-1 .swiper-button-prev {
+  left: 24px;
+}
+
+.dynamic-banner-1 .swiper-button-next {
+  right: 24px;
+}
+
+.dynamic-banner-1 .swiper-pagination {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dynamic-banner-1 .swiper-pagination-bullet {
+  display: block;
+}
+
+/* Carrossel de categorias */
+.dynamic-banner-5 .swiper-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.dynamic-banner-5 .banner-name {
+  display: flex;
+}
+
+/* Vitrines */
+.vitrine-full {
+  position: relative;
+}
+
+.ra-vitrine .product-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.ra-vitrine figure {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 2 / 3;
+}
+
+.ra-vitrine .img-principal {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ra-vitrine figure > button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  font-size: 16px;
+  color: #3a2e2b;
+  cursor: pointer;
+}
+
+.ra-vitrine .top-price {
+  display: flex;
+}
+
+.ra-vitrine .secondary-price {
+  display: flex;
+  gap: 4px;
+}
+
+.tag-area {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.tag-area .tag-value {
+  display: inline-block;
+  padding: 4px 10px;
+  color: #f6efe6;
+  background: #6a0c0c;
+}
+
+.espaco {
+  padding-bottom: 24px;
+}
+
+/* Rodapé */
+.ra-footer .footer-top .container {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.ra-footer .footer-top strong {
+  display: block;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ra-footer .footer-top span {
+  font-size: 12px;
+}
+
+.ra-footer .footer-middle-top .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.ra-footer .section-title {
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid;
+}
+
+.ra-footer .list-menu-default li {
+  margin-bottom: 8px;
+}
+
+.ra-footer .footer-bottom {
+  padding: 24px 16px;
+  text-align: center;
+  border-top: 1px solid;
+}
+
+/* Celular */
+@media (max-width: 767px) {
+  .ra-header .header-info .item-top:not(:last-child) {
+    display: none;
+  }
+
+  .ra-header .search-area,
+  .ra-header .box-user {
+    display: none;
+  }
+
+  .ra-header .header-middle .container {
+    justify-content: center;
+  }
+
+  .ra-header .logo img {
+    height: 40px;
+  }
+
+  #nav-root {
+    justify-content: flex-start;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  #nav-root > li > a {
+    padding: 14px 14px !important;
+  }
+
+  .dynamic-banner-1 img {
+    height: 70vh;
+    object-position: 68% 30%;
+  }
+
+  .dynamic-banner-5 .swiper-wrapper {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .ra-vitrine .product-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .ra-footer .footer-top .container {
+    flex-direction: column;
+  }
+
+  .ra-footer .footer-middle-top .container {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+  </style>
   <!-- O tema de verdade: este é o arquivo que vai para a Magazord -->
   <link rel="stylesheet" href="donnage-tema.css">
 </head>

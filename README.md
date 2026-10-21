@@ -7,6 +7,6 @@ Prévia do novo layout da loja DonnaGê (plataforma Magazord), inspirado na ling
 - **Blocos para a página inicial:** pasta `blocos/`
 - **Como instalar na loja:** `GUIA-INSTALACAO.md`
 
-A pasta `preview/` só serve para esta prévia: ela imita a estrutura que a Magazord monta. Não suba esses arquivos na loja.
+O `index.html` traz embutida uma estrutura simulada da Magazord (o bloco `<style>` no topo), só para a prévia funcionar. Na loja essa estrutura já existe: lá vai apenas o `donnage-tema.css`.
 
 As fotos vêm do servidor de imagens da própria loja (donnage.cdn.magazord.com.br).
