@@ -1,0 +1,931 @@
+/* ==========================================================================
+   DonnaGê — Tema "Serra" (inspirado na linguagem da Principessa)
+   Plataforma: Magazord · Versão 1.0 · 16/10/2026
+
+   Como usar: subir este arquivo em Recursos (arquivo CSS da loja), no lugar
+   do basenutribomba.css. Veja o GUIA-INSTALACAO.md.
+
+   Seções:
+   1. Fontes e variáveis
+   2. Base
+   3. Barra de aviso (topo)
+   4. Cabeçalho e busca
+   5. Menu
+   6. Banners
+   7. Títulos de seção
+   8. Categorias (carrossel de banners vira mosaico)
+   9. Vitrines e cards de produto
+   10. Avaliações
+   11. Rodapé
+   12. Avisos, pop-ups e WhatsApp
+   13. Blocos HTML próprios (.dg-*)
+   14. Celular
+   ========================================================================== */
+
+/* 1. Fontes e variáveis ---------------------------------------------------- */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Paleta do tema */
+  --dg-bordo: #6a0c0c;
+  --dg-vinho: #3e0a0b;
+  --dg-creme: #f6efe6;
+  --dg-papel: #fbf8f3;
+  --dg-grafite: #1e1615;
+  --dg-texto: #3a2e2b;
+  --dg-texto-suave: #6b5d58;
+  --dg-dourado: #b08d57;
+  --dg-dourado-escuro: #8a6a3a;
+  --dg-linha: #ede5da;
+
+  /* Tipografia */
+  --dg-fonte-titulo: "Playfair Display", Georgia, serif;
+  --dg-fonte-texto: "Montserrat", Arial, sans-serif;
+
+  /* Texto da barra de aviso no topo (edite aqui) */
+  --dg-aviso: "FRETE GRÁTIS ACIMA DE R$ 249  ·  5% OFF NO PIX  ·  6X SEM JUROS";
+
+  /* Cor base da Magazord: mantém o bordô da marca */
+  --cor-base: #6a0c0c;
+  --cor-base-darken: #3e0a0b;
+}
+
+/* 2. Base ------------------------------------------------------------------ */
+body {
+  font-family: var(--dg-fonte-texto);
+  color: var(--dg-texto);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--dg-dourado);
+  outline-offset: 2px;
+}
+
+/* 3. Barra de aviso (topo) ------------------------------------------------- */
+/* A faixa bordô vira uma barra fina vinho com um único recado no centro.
+   Os atalhos (rastrear pedido, favoritos, carrinho, entrar) continuam à direita. */
+.ra-header .header-top {
+  height: 36px;
+  background: var(--dg-vinho) !important;
+}
+
+.ra-header .header-top .box-top {
+  position: relative;
+  height: 36px;
+}
+
+/* O recado fica à esquerda; os atalhos ficam à direita (sem sobrepor) */
+.ra-header .header-top .box-top::before {
+  content: var(--dg-aviso);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: pre;
+  font-family: var(--dg-fonte-texto);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--dg-creme);
+  pointer-events: none;
+}
+
+/* Redes sociais saem do topo (ficam no rodapé) */
+.ra-header .header-top .box-social {
+  display: none;
+}
+
+.ra-header .header-top .header-info {
+  margin-left: auto;
+}
+
+.ra-header .header-top .header-info .item-top {
+  border-color: rgba(246, 239, 230, 0.2) !important;
+}
+
+.ra-header .header-top .text-item-top,
+.ra-header .header-top .login,
+.ra-header .header-top .link-cart {
+  font-family: var(--dg-fonte-texto);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dg-creme) !important;
+}
+
+.ra-header .header-top .link-item-top {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* 4. Cabeçalho e busca ----------------------------------------------------- */
+.ra-header {
+  box-shadow: none !important;
+  border-bottom: 1px solid var(--dg-linha);
+}
+
+.ra-header .header-middle {
+  background: #ffffff !important;
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+}
+
+.ra-header .header-middle .logo img,
+.ra-header .header-middle .logo svg {
+  max-height: 52px;
+  width: auto;
+}
+
+/* Busca no estilo Principessa: só uma linha embaixo */
+.ra-header .search-area {
+  width: 280px !important;
+}
+
+.ra-header #frm-search {
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--dg-grafite) !important;
+  border-radius: 0 !important;
+}
+
+.ra-header #frm-search input {
+  font-family: var(--dg-fonte-texto);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--dg-grafite);
+  background: transparent !important;
+}
+
+.ra-header #frm-search input::placeholder {
+  color: var(--dg-texto-suave);
+}
+
+/* Bloco "Cadastre-se" mais discreto */
+.ra-header .box-user a {
+  padding: 10px 16px !important;
+  font-family: var(--dg-fonte-texto);
+  font-size: 12px;
+  color: var(--dg-texto) !important;
+}
+
+.ra-header .box-user a:hover {
+  background: var(--dg-papel) !important;
+}
+
+/* 5. Menu ------------------------------------------------------------------ */
+.ra-header .header-bottom {
+  background: #ffffff !important;
+  border-top: 1px solid var(--dg-linha);
+}
+
+#nav-root > li > a {
+  padding: 16px 22px !important;
+  font-family: var(--dg-fonte-texto);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dg-grafite) !important;
+  position: relative;
+}
+
+/* Sublinhado fino ao passar o mouse */
+#nav-root > li > a::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 10px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+#nav-root > li > a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Outlet em destaque, como na Principessa */
+#nav-root > li.outlet > a,
+#nav-root > li.item-menu-outlet > a {
+  color: var(--dg-bordo) !important;
+  font-weight: 600;
+}
+
+/* Submenu */
+#nav-root .menu-level-2 {
+  background: #ffffff !important;
+  border-top: 1px solid var(--dg-linha);
+  box-shadow: 0 16px 32px rgba(30, 22, 21, 0.08);
+}
+
+#nav-root .menu-level-2 a {
+  font-family: var(--dg-fonte-texto);
+  font-size: 13px !important;
+  color: var(--dg-texto) !important;
+}
+
+#nav-root .menu-level-2 a:hover {
+  background: var(--dg-papel) !important;
+  color: var(--dg-bordo) !important;
+}
+
+/* 6. Banners --------------------------------------------------------------- */
+.dynamic-banner-1 .swiper-button-prev,
+.dynamic-banner-1 .swiper-button-next {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(246, 239, 230, 0.85);
+  color: var(--dg-grafite);
+}
+
+.dynamic-banner-1 .swiper-button-prev::after,
+.dynamic-banner-1 .swiper-button-next::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.dynamic-banner-1 .swiper-pagination-bullet {
+  width: 10px;
+  height: 4px;
+  border-radius: 2px;
+  background: #ffffff;
+  opacity: 0.55;
+}
+
+.dynamic-banner-1 .swiper-pagination-bullet-active {
+  width: 28px;
+  opacity: 1;
+}
+
+/* Banners fixos: sem cantos arredondados, com um respiro em volta */
+.fixed-banners {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.fixed-banners img {
+  border-radius: 0 !important;
+}
+
+/* 7. Títulos de seção ------------------------------------------------------ */
+.title-ctn {
+  margin-top: 56px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.title-ctn .bg-title,
+.title-ctn .bg-title span {
+  background: transparent !important;
+  font-family: var(--dg-fonte-titulo) !important;
+  font-size: 38px !important;
+  font-weight: 400 !important;
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: none !important;
+  color: var(--dg-grafite) !important;
+}
+
+.title-ctn .bg-title::before,
+.title-ctn .bg-title::after {
+  display: none !important;
+}
+
+/* Filete dourado embaixo do título */
+.title-ctn .bg-title::after {
+  content: "";
+  display: block !important;
+  width: 48px;
+  height: 1px;
+  margin: 16px auto 0;
+  background: var(--dg-dourado);
+}
+
+/* 8. Categorias (carrossel de banners vira mosaico) ------------------------ */
+/* Vale para o componente "carrossel de banners" com nome (dynamic-banner-5),
+   que hoje mostra as categorias em círculos. */
+.dynamic-banner-5 .swiper-slide a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.dynamic-banner-5 figure {
+  margin: 0;
+  border-radius: 0 !important;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--dg-papel);
+}
+
+.dynamic-banner-5 figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 !important;
+  transition: transform 0.6s ease;
+}
+
+.dynamic-banner-5 .swiper-slide a:hover figure img {
+  transform: scale(1.04);
+}
+
+/* Escurece a base da foto para o nome ficar legível */
+.dynamic-banner-5 .swiper-slide a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(30, 22, 21, 0) 55%, rgba(30, 22, 21, 0.72) 100%);
+  pointer-events: none;
+}
+
+.dynamic-banner-5 .banner-name {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  justify-content: flex-start !important;
+  text-align: left;
+  font-family: var(--dg-fonte-texto);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff !important;
+}
+
+.dynamic-banner-5 .banner-name::after {
+  content: "Ver peças →";
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--dg-creme);
+}
+
+/* O nome fica em coluna (título + "ver peças") */
+.dynamic-banner-5 .banner-name {
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
+/* 9. Vitrines e cards de produto ------------------------------------------- */
+.ra-vitrine .product-list > li > a figure {
+  background: var(--dg-papel);
+  overflow: hidden;
+}
+
+.ra-vitrine .img-principal {
+  transition: transform 0.6s ease !important;
+}
+
+.ra-vitrine .product-list > li > a:hover .img-principal {
+  transform: scale(1.03);
+}
+
+.ra-vitrine .vitrine-default {
+  text-align: left !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+.ra-vitrine .product-name {
+  margin-top: 14px !important;
+  font-family: var(--dg-fonte-texto);
+  font-size: 13px !important;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--dg-texto) !important;
+}
+
+.ra-vitrine .price-product {
+  min-height: 0 !important;
+  margin-top: 6px;
+}
+
+.ra-vitrine .top-price {
+  justify-content: flex-start !important;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.ra-vitrine .valor-big {
+  font-family: var(--dg-fonte-texto);
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--dg-grafite) !important;
+}
+
+.ra-vitrine .secondary-price,
+.ra-vitrine .parcelas,
+.ra-vitrine .valor-parcelado {
+  font-size: 12px !important;
+  color: var(--dg-texto-suave) !important;
+}
+
+/* Botão de favorito discreto */
+.ra-vitrine figure > button {
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: none !important;
+  border-radius: 50%;
+}
+
+/* Tamanhos que aparecem ao passar o mouse */
+.ra-vitrine .derivacoes-hover {
+  background: rgba(251, 248, 243, 0.94);
+}
+
+.ra-vitrine .deriva {
+  font-size: 12px;
+  color: var(--dg-grafite);
+}
+
+/* Etiquetas (novo, desconto) */
+.tag-area .tag-value {
+  border-radius: 0 !important;
+  font-family: var(--dg-fonte-texto);
+  font-size: 11px !important;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Setas das vitrines */
+.ra-vitrine .button-prev,
+.ra-vitrine .button-next {
+  color: var(--dg-grafite);
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.ra-vitrine .button-prev:hover,
+.ra-vitrine .button-next:hover {
+  opacity: 1;
+}
+
+/* 10. Avaliações ----------------------------------------------------------- */
+.widget-avaliacao {
+  background: var(--dg-papel);
+}
+
+/* 11. Rodapé --------------------------------------------------------------- */
+.ra-footer .footer-top {
+  background: var(--dg-creme) !important;
+  color: var(--dg-texto);
+}
+
+.ra-footer .footer-middle,
+.ra-footer .footer-middle-top,
+.ra-footer .footer-middle-bottom,
+.ra-footer .footer-bottom,
+.ra-footer > div > div {
+  background: var(--dg-grafite) !important;
+  color: #cbbdb2;
+}
+
+.ra-footer .section-title,
+.ra-footer .section-title span {
+  font-family: var(--dg-fonte-texto);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dg-creme) !important;
+  border-color: rgba(246, 239, 230, 0.15) !important;
+}
+
+.ra-footer a,
+.ra-footer li,
+.ra-footer p,
+.ra-footer .list-menu-default {
+  color: #cbbdb2 !important;
+  font-size: 13px;
+}
+
+.ra-footer a:hover {
+  color: var(--dg-creme) !important;
+}
+
+.ra-footer .border-secondary-200,
+.ra-footer .footer-bottom {
+  border-color: rgba(246, 239, 230, 0.12) !important;
+}
+
+/* Ícones das redes em creme */
+.ra-footer .box-social img,
+.ra-footer .box-social svg {
+  filter: brightness(0) invert(0.93) sepia(0.15);
+}
+
+/* 12. Avisos, pop-ups e WhatsApp ------------------------------------------- */
+.informativo-lgpd {
+  background: var(--dg-grafite) !important;
+  color: var(--dg-creme) !important;
+  font-size: 13px;
+}
+
+.informativo-lgpd a {
+  color: var(--dg-creme) !important;
+  text-decoration: underline;
+}
+
+.informativo-lgpd .botao-continuar-fechar {
+  background: var(--dg-creme) !important;
+  border-color: var(--dg-creme) !important;
+  color: var(--dg-grafite) !important;
+  border-radius: 0 !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.cupom-desconto .titulo-newsletter {
+  font-family: var(--dg-fonte-titulo);
+  font-weight: 400;
+}
+
+/* Botões padrão da loja: cantos retos e caixa alta */
+.button.button-base,
+.btn-comprar,
+.botao-comprar {
+  border-radius: 0 !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* 13. Blocos HTML próprios (.dg-*) ----------------------------------------- */
+/* Usados pelos arquivos da pasta blocos/. Só afetam elementos com classe dg-. */
+.dg-bloco {
+  font-family: var(--dg-fonte-texto);
+  color: var(--dg-texto);
+  box-sizing: border-box;
+}
+
+.dg-bloco *,
+.dg-bloco *::before,
+.dg-bloco *::after {
+  box-sizing: inherit;
+}
+
+.dg-bloco img {
+  display: block;
+  max-width: 100%;
+}
+
+.dg-eyebrow {
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dg-dourado-escuro);
+}
+
+.dg-titulo {
+  margin: 0 0 18px;
+  font-family: var(--dg-fonte-titulo);
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 400;
+  line-height: 1.12;
+  color: var(--dg-vinho);
+}
+
+.dg-texto {
+  margin: 0 0 28px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--dg-texto);
+}
+
+.dg-botao {
+  display: inline-block;
+  padding: 15px 34px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--dg-creme) !important;
+  background: var(--dg-bordo);
+  border: 1px solid var(--dg-bordo);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dg-botao:hover {
+  background: var(--dg-vinho);
+  border-color: var(--dg-vinho);
+}
+
+.dg-botao--claro {
+  color: var(--dg-creme) !important;
+  background: transparent;
+  border-color: var(--dg-creme);
+}
+
+.dg-botao--claro:hover {
+  color: var(--dg-vinho) !important;
+  background: var(--dg-creme);
+}
+
+/* 13a. Mosaico de categorias */
+.dg-mosaico {
+  max-width: 1240px;
+  margin: 56px auto;
+  padding: 0 16px;
+}
+
+.dg-mosaico__frase {
+  margin: 0 0 32px;
+  text-align: center;
+  font-family: var(--dg-fonte-titulo);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--dg-texto-suave);
+}
+
+.dg-mosaico__grade {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.dg-mosaico__item {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--dg-papel);
+}
+
+.dg-mosaico__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.dg-mosaico__item:hover img {
+  transform: scale(1.04);
+}
+
+.dg-mosaico__item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(30, 22, 21, 0) 55%, rgba(30, 22, 21, 0.75) 100%);
+}
+
+.dg-mosaico__nome {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1;
+  color: #ffffff;
+}
+
+.dg-mosaico__nome strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.dg-mosaico__nome span {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dg-creme);
+}
+
+/* 13b. História da marca */
+.dg-historia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1240px;
+  margin: 72px auto;
+  background: var(--dg-creme);
+}
+
+.dg-historia__foto img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.dg-historia__conteudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 56px 64px;
+}
+
+/* 13c. Faixa de vantagens */
+.dg-vantagens {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1240px;
+  margin: 0 auto 72px;
+  padding: 32px 16px;
+  border-top: 1px solid var(--dg-linha);
+  border-bottom: 1px solid var(--dg-linha);
+  text-align: center;
+}
+
+.dg-vantagens__item strong {
+  display: block;
+  font-family: var(--dg-fonte-titulo);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--dg-bordo);
+}
+
+.dg-vantagens__item span {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--dg-texto-suave);
+}
+
+/* 13d. Destaque masculino */
+.dg-masculino {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 2fr;
+  gap: 48px;
+  align-items: center;
+  margin: 72px 0;
+  padding: 56px max(16px, calc((100% - 1240px) / 2));
+  background: var(--dg-vinho);
+}
+
+.dg-masculino .dg-eyebrow {
+  color: #c9a46a;
+}
+
+.dg-masculino .dg-titulo {
+  color: var(--dg-creme);
+}
+
+.dg-masculino .dg-texto {
+  color: #e3d3c4;
+}
+
+.dg-masculino__fotos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.dg-masculino__fotos a {
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.dg-masculino__fotos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.dg-masculino__fotos a:hover img {
+  transform: scale(1.04);
+}
+
+/* 14. Celular -------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .ra-header .header-top .box-top::before {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    content: "5% OFF NO PIX  ·  6X SEM JUROS";
+  }
+
+  .title-ctn {
+    margin-top: 36px;
+    margin-bottom: 18px;
+  }
+
+  .title-ctn .bg-title,
+  .title-ctn .bg-title span {
+    font-size: 26px !important;
+  }
+
+  /* No celular as categorias ficam pequenas: o nome volta para baixo da foto */
+  .dynamic-banner-5 .swiper-slide a::after {
+    display: none;
+  }
+
+  .dynamic-banner-5 .banner-name {
+    position: static;
+    margin-top: 8px;
+    align-items: center !important;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--dg-grafite) !important;
+  }
+
+  .dynamic-banner-5 .banner-name::after {
+    display: none;
+  }
+
+  /* Cards de produto estreitos: texto menor e centralizado */
+  .ra-vitrine .vitrine-default {
+    text-align: center !important;
+  }
+
+  .ra-vitrine .top-price {
+    justify-content: center !important;
+  }
+
+  .ra-vitrine .product-name {
+    font-size: 11px !important;
+  }
+
+  .ra-vitrine .valor-big {
+    font-size: 12px !important;
+  }
+
+  .ra-vitrine .secondary-price,
+  .ra-vitrine .parcelas,
+  .ra-vitrine .valor-parcelado {
+    font-size: 10px !important;
+  }
+
+  /* Acordeões do rodapé no celular */
+  .ra-footer .group {
+    background: transparent !important;
+    border-color: rgba(246, 239, 230, 0.12) !important;
+  }
+
+  .dg-mosaico__grade {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .dg-mosaico__nome {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .dg-mosaico__nome strong {
+    font-size: 13px;
+    letter-spacing: 0.16em;
+  }
+
+  .dg-historia {
+    grid-template-columns: 1fr;
+    margin: 48px 16px;
+  }
+
+  .dg-historia__foto img {
+    min-height: 240px;
+    max-height: 320px;
+  }
+
+  .dg-historia__conteudo {
+    padding: 32px 24px;
+  }
+
+  .dg-vantagens {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 8px;
+    margin: 0 16px 48px;
+  }
+
+  .dg-vantagens__item strong {
+    font-size: 24px;
+  }
+
+  .dg-masculino {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 40px 16px;
+  }
+
+  .dg-masculino__fotos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
