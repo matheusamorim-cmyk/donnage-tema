@@ -1,6 +1,8 @@
 /* ==========================================================================
    DonnaGê — Tema "Serra" (inspirado na linguagem da Principessa)
-   Plataforma: Magazord · Versão 1.0 · 16/10/2026
+   Plataforma: Magazord · Versão 1.1 · 06/11/2026
+   (1.1: condições especiais e guia por tamanho abaixo dos banners;
+    barra do topo passa a mostrar o cupom de boas-vindas)
 
    Como usar: subir este arquivo em Recursos (arquivo CSS da loja), no lugar
    do basenutribomba.css. Veja o GUIA-INSTALACAO.md.
@@ -43,7 +45,7 @@
   --dg-fonte-texto: "Montserrat", Arial, sans-serif;
 
   /* Texto da barra de aviso no topo (edite aqui) */
-  --dg-aviso: "FRETE GRÁTIS ACIMA DE R$ 249  ·  5% OFF NO PIX  ·  6X SEM JUROS";
+  --dg-aviso: "CUPOM DE BOAS-VINDAS: 10% OFF  ·  ENVIAMOS PARA TODO O BRASIL";
 
   /* Cor base da Magazord: mantém o bordô da marca */
   --cor-base: #6a0c0c;
@@ -812,12 +814,168 @@ button:focus-visible {
   transform: scale(1.04);
 }
 
+/* 13e. Condições especiais (logo abaixo dos banners) ---------------------- */
+.dg-condicoes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 22px 16px;
+  border-bottom: 1px solid var(--dg-linha);
+}
+
+.dg-condicoes__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 4px 12px;
+  border-left: 1px solid var(--dg-linha);
+}
+
+.dg-condicoes__item:first-child {
+  border-left: 0;
+}
+
+.dg-condicoes__icone {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  color: var(--dg-bordo);
+}
+
+.dg-condicoes__icone svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dg-condicoes__item strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dg-grafite);
+}
+
+.dg-condicoes__item span {
+  display: block;
+  margin-top: 3px;
+  font-size: 13px;
+  color: var(--dg-texto-suave);
+}
+
+/* 13f. Guia por tamanho ----------------------------------------------------- */
+.dg-tamanhos {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 56px 16px 24px;
+  text-align: center;
+}
+
+.dg-tamanhos__titulo {
+  margin: 0;
+  font-family: var(--dg-fonte-titulo);
+  font-size: 34px;
+  font-weight: 400;
+  color: var(--dg-grafite);
+}
+
+.dg-tamanhos__sub {
+  margin: 10px 0 32px;
+  font-size: 14px;
+  color: var(--dg-texto-suave);
+}
+
+/* As linhas ficam numa coluna centralizada e alinhadas pela esquerda */
+.dg-tamanhos__tabela {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.dg-tamanhos__linha {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 28px;
+  margin-bottom: 22px;
+}
+
+.dg-tamanhos__rotulo {
+  width: 92px;
+  padding-bottom: 18px;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dg-dourado-escuro);
+}
+
+.dg-tamanhos__grupo {
+  text-align: left;
+}
+
+.dg-tamanhos__grupo small {
+  display: block;
+  margin: 0 0 8px 2px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dg-texto-suave);
+}
+
+.dg-tamanhos__numeros {
+  display: flex;
+  border: 1px solid var(--dg-linha);
+}
+
+.dg-tamanhos__numeros a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 52px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--dg-grafite);
+  text-decoration: none;
+  border-left: 1px solid var(--dg-linha);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dg-tamanhos__numeros a:first-child {
+  border-left: 0;
+}
+
+.dg-tamanhos__numeros a:hover,
+.dg-tamanhos__numeros a:focus-visible {
+  color: var(--dg-creme);
+  background: var(--dg-bordo);
+}
+
+.dg-tamanhos__ajuda {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--dg-texto-suave);
+}
+
+.dg-tamanhos__ajuda a {
+  color: var(--dg-bordo);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* 14. Celular -------------------------------------------------------------- */
 @media (max-width: 767px) {
   .ra-header .header-top .box-top::before {
     font-size: 10px;
     letter-spacing: 0.1em;
-    content: "5% OFF NO PIX  ·  6X SEM JUROS";
+    content: "CUPOM DE BOAS-VINDAS: 10% OFF";
   }
 
   .title-ctn {
@@ -927,5 +1085,83 @@ button:focus-visible {
   .dg-masculino__fotos {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
+  }
+
+  /* Condições especiais e guia por tamanho */
+  .dg-condicoes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 0;
+    padding: 20px 8px;
+  }
+
+  .dg-condicoes__item {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  .dg-condicoes__item:nth-child(3) {
+    border-left: 0;
+  }
+
+  .dg-condicoes__icone {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dg-condicoes__item strong {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .dg-condicoes__item span {
+    font-size: 12px;
+  }
+
+  .dg-tamanhos {
+    padding: 40px 16px 8px;
+  }
+
+  .dg-tamanhos__titulo {
+    font-size: 26px;
+  }
+
+  .dg-tamanhos__sub {
+    margin-bottom: 24px;
+    font-size: 13px;
+  }
+
+  .dg-tamanhos__tabela {
+    display: flex;
+  }
+
+  .dg-tamanhos__linha {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .dg-tamanhos__rotulo {
+    width: auto;
+    padding: 0;
+    text-align: left;
+  }
+
+  .dg-tamanhos__numeros {
+    flex-wrap: wrap;
+    border: 0;
+    gap: 6px;
+  }
+
+  .dg-tamanhos__numeros a {
+    width: calc((100% - 30px) / 6);
+    height: 46px;
+    border: 1px solid var(--dg-linha);
+  }
+
+  .dg-tamanhos__numeros a:first-child {
+    border-left: 1px solid var(--dg-linha);
   }
 }

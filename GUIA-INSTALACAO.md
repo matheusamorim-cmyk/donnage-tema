@@ -1,6 +1,6 @@
 # Novo tema DonnaGê: guia de instalação na Magazord
 
-Versão 1.0 · 16/10/2026
+Versão 1.1 · 06/11/2026 (novidade: blocos 05 e 06, logo abaixo dos banners)
 
 ## O que tem nesta pasta
 
@@ -11,6 +11,8 @@ Versão 1.0 · 16/10/2026
 | `blocos/02-historia-da-marca.html` | Bloco "Nossa história" (Egidiane, Antônio Prado) |
 | `blocos/03-faixa-vantagens.html` | Faixa com P ao G8, frete grátis, 6x e 5% no Pix |
 | `blocos/04-destaque-masculino.html` | Destaque da linha masculina plus size, em vinho |
+| `blocos/05-condicoes-especiais.html` | Faixa fina com frete grátis, 6x, 5% no Pix e troca fácil, logo abaixo dos banners |
+| `blocos/06-guia-por-tamanho.html` | "Escolha pelo seu tamanho": botões P ao G8 que levam às peças daquele tamanho |
 
 O CSS já contém o estilo dos blocos. Os blocos só funcionam com o CSS instalado.
 
@@ -27,7 +29,7 @@ A Magazord carrega arquivos CSS próprios da loja pelo recurso **Recursos** (no 
 3. Remova a referência ao `basenutribomba.css`, ou substitua o conteúdo dele pelo do novo arquivo.
 4. Abra o site em uma aba anônima e confira. Se nada mudar, limpe o cache (no painel e no navegador).
 
-**Para editar o recado do topo:** no começo do arquivo, troque o texto de `--dg-aviso`. A versão do celular fica na seção 14 (`content: "5% OFF NO PIX · 6X SEM JUROS"`).
+**Para editar o recado do topo:** no começo do arquivo, troque o texto de `--dg-aviso`. A versão do celular fica na seção 14 (`content: "CUPOM DE BOAS-VINDAS: 10% OFF"`). Desde a versão 1.1, o topo mostra o cupom, porque frete, parcelas e Pix passaram para o bloco 05.
 
 ---
 
@@ -52,12 +54,16 @@ Cada arquivo da pasta `blocos/` é um trecho de HTML pronto para colar.
 1. Na edição da página inicial, veja se existe um componente de **HTML / conteúdo livre**.
 2. Se existir, crie um componente para cada bloco e cole o conteúdo do arquivo. Ordem sugerida:
    1. Banner principal
-   2. **Bloco 01** (mosaico de categorias)
-   3. Vitrine de lançamentos
-   4. **Bloco 04** (destaque masculino)
-   5. Vitrine masculina
-   6. **Bloco 02** (história) e **Bloco 03** (vantagens)
-   7. Avaliações
+   2. **Bloco 05** (condições especiais)
+   3. **Bloco 06** (guia por tamanho)
+   4. **Bloco 01** (mosaico de categorias)
+   5. Vitrine de lançamentos
+   6. **Bloco 04** (destaque masculino)
+   7. Vitrine masculina
+   8. **Bloco 02** (história) e **Bloco 03** (vantagens)
+   9. Avaliações
+
+   Os botões do bloco 06 usam os filtros de tamanho da loja (`?derivacao=`), conferidos em 06/11/2026. Se a Magazord recriar os tamanhos, clique em cada botão para conferir se ainda abre o tamanho certo.
 3. Se **não** existir componente de HTML, peça ao suporte da Magazord para incluir os blocos, ou transforme o mosaico e o destaque masculino em banners de imagem.
 
 As fotos dos blocos usam imagens que já estão no site. Quando houver fotos de campanha, basta trocar o endereço em `src=""`.
